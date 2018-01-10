@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="para"></p>
+
+
+	<script type="text/javascript">
+
+		let num = prompt("How many games do you want to play: ");
+		game(num);
+
+		function computerPlay() {
+			let num = Math.floor(Math.random() * 3);
+
+			let hand = "paper";
+			if (num > 1){
+				hand = "scissors";
+			} if (num < 1) {
+				hand = "rock";
+			}
+			return(hand);
+		}
+
+		function playGame(ps, cs) {
+
+			if (ps === cs) {
+				return "Tie, both players drew " + ps;
+			} else if ((ps === "rock" && cs ==="scissors") ||
+ 		  	 		   (ps === "scissors" && cs ==="paper") ||
+ 		  			   (ps === "paper" && cs ==="rock")) {
+				return "Player wins: " + ps + " beats " + cs;
+			} 
+			  else if ((cs === "rock" && ps ==="scissors") ||
+ 		  	 		   (cs === "scissors" && ps ==="paper") ||
+ 		  			   (cs === "paper" && ps ==="rock")) {
+				return "Computer wins: " + cs + " beats " + ps;
+ 		  	}
+ 		}
+
+ 		function game(num) {
+ 			for (let x = 1; x <= num; x++) {
+ 				let ps = prompt("Enter rock, paper or scissors: ").toLowerCase();
+ 				console.log("Game " + x + " -- " + playGame(ps, computerPlay()));
+ 				document.getElementById("para").innerHTML += "Game " + x + " -- " + playGame(ps, computerPlay()) + "<br><br>";
+ 			}	
+ 		}
+
+ 		//How to style the ps to be underlined when displays??
+
+
+	</script>
+</body>
+</html>
